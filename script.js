@@ -50,7 +50,7 @@ function showNextPlakat() {
     const plakatIndex = plakatPlaylist.pop();
     
     // Показываем плакат
-    const plakatSrc = `plakats/${plakatIndex}.png`;
+    const plakatSrc = `${plakatIndex}.png`;
     plakatImage.src = plakatSrc;
     plakatImage.style.display = 'block';
     plakatInfo.textContent = `Показывается: ${plakatIndex}.png (осталось в плейлисте: ${plakatPlaylist.length})`;
