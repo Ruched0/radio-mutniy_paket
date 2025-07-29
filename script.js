@@ -1,7 +1,7 @@
 // --- НАСТРОЙКА ---
-const totalSounds = 100;
+const totalSounds = 110;
 const totalPlakats = 127;
-const plakatChangeInterval = 5000; // 5 секунд в миллисекундах
+const plakatChangeInterval = 5000;
 // --- КОНЕЦ НАСТРОЙКИ ---
 
 // Получаем доступ к элементам на странице
