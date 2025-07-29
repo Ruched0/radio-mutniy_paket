@@ -2,31 +2,92 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Генератор случайных звуков</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Малиновое радио - Улучшенная версия</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
-
     <div class="container">
-        <h1>малиновое радио</h1>
-        <p>Нажмите на кнопку, чтобы запустить проигрывание радио. Следующий звук начнется автоматически после окончания предыдущего.</p>
-        <button id="playButton">▶️ Запустить</button>
+        <header class="header">
+            <h1>малиновое радио</h1>
+            <p class="subtitle">Непрерывное воспроизведение с автоматической сменой треков и плакатов</p>
+        </header>
         
-        <!-- Контейнер для плаката -->
-        <div class="plakat-container">
-            <img id="plakatImage" src="" alt="Плакат" style="display: none;">
+        <div class="controls">
+            <button id="playButton" class="control-button primary">
+                <span class="button-icon">▶️</span>
+                <span class="button-text">Запустить</span>
+            </button>
+            <button id="pauseButton" class="control-button pause" style="display: none;">
+                <span class="button-icon">⏸️</span>
+                <span class="button-text">Пауза</span>
+            </button>
+            <button id="nextButton" class="control-button secondary">
+                <span class="button-icon">⏭️</span>
+                <span class="button-text">Следующий</span>
+            </button>
         </div>
-        <div class="plakat-info">
-            <span id="plakatInfo">Плакаты будут показываться во время воспроизведения</span>
+
+        <div class="status-panel">
+            <div class="current-track" id="currentTrack">Готов к воспроизведению</div>
+            
+            <div class="progress-section">
+                <div class="progress-label">
+                    <span class="progress-title">Прогресс трека</span>
+                    <span id="trackTime" class="time-display">0:00 / 0:00</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="trackProgress"></div>
+                </div>
+            </div>
+
+            <div class="counters-grid">
+                <div class="counter-block">
+                    <div class="counter-value" id="remainingTracks">0</div>
+                    <div class="counter-label">Треков осталось</div>
+                </div>
+                <div class="counter-block">
+                    <div class="counter-value" id="remainingPlakats">0</div>
+                    <div class="counter-label">Плакатов осталось</div>
+                </div>
+            </div>
         </div>
-        
-        <!-- Аудио-элемент, который будет проигрывать звуки. Он не виден пользователю. -->
-        <audio id="audioPlayer"></audio>
+
+        <div class="plakat-section">
+            <div class="plakat-container">
+                <img id="plakatImage" src="" alt="Плакат" style="display: none;">
+                <div id="plakatPlaceholder" class="plakat-placeholder">
+                    <div class="placeholder-icon">🖼️</div>
+                    <div class="placeholder-text">Плакаты появятся во время воспроизведения</div>
+                </div>
+            </div>
+            
+            <div class="plakat-info">
+                <span id="plakatInfo">Плакаты будут показываться каждые 5 секунд во время воспроизведения</span>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-value" id="totalTracks">110</div>
+                <div class="stat-label">Всего треков</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="totalPlakatsCount">127</div>
+                <div class="stat-label">Всего плакатов</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="playedTracks">0</div>
+                <div class="stat-label">Воспроизведено</div>
+            </div>
+        </div>
+
+        <audio id="audioPlayer" preload="none"></audio>
     </div>
 
-    <!-- Подключаем наш скрипт -->
     <script src="script.js"></script>
-
 </body>
 </html>
